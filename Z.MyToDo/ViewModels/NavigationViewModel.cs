@@ -2,6 +2,11 @@
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Z.MyToDo.Extensions;
 
 namespace Z.MyToDo.ViewModels
@@ -17,6 +22,11 @@ namespace Z.MyToDo.ViewModels
             this.aggregator = containerProvider.Resolve<IEventAggregator>();
         }
 
+        public virtual void OnNavigatedTo(NavigationContext navigationContext)
+        {
+
+        }
+
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
@@ -27,14 +37,9 @@ namespace Z.MyToDo.ViewModels
 
         }
 
-        public virtual void OnNavigatedTo(NavigationContext navigationContext)
-        {
-
-        }
-
         public void UpdateLoading(bool IsOpen)
         {
-            aggregator.UpdateLoading(new Common.Events.UpdateModel
+            this.aggregator.UpdateLoading(new Common.Events.UpdateModel
             {
                 IsOpen = IsOpen
             });

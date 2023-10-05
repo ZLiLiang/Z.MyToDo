@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Z.MyToDo.Views
@@ -17,7 +18,7 @@ namespace Z.MyToDo.Views
     /// <summary>
     /// MemoView.xaml 的交互逻辑
     /// </summary>
-    public partial class MemoView : Window
+    public partial class MemoView : UserControl
     {
         public MemoView()
         {

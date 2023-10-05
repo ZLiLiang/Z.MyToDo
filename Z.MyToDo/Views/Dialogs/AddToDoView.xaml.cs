@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Z.MyToDo.Views
+namespace Z.MyToDo.Views.Dialogs
 {
     /// <summary>
-    /// ToDoView.xaml 的交互逻辑
+    /// AddToDoView.xaml 的交互逻辑
     /// </summary>
-    public partial class ToDoView : UserControl
+    public partial class AddToDoView : UserControl
     {
-        public ToDoView()
+        public AddToDoView()
         {
             InitializeComponent();
         }

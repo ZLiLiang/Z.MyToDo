@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Z.MyToDo.Views
 {
     /// <summary>
-    /// ToDoView.xaml 的交互逻辑
+    /// AboutView.xaml 的交互逻辑
     /// </summary>
-    public partial class ToDoView : UserControl
+    public partial class AboutView : UserControl
     {
-        public ToDoView()
+        public AboutView()
         {
             InitializeComponent();
         }

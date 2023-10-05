@@ -1,15 +1,14 @@
 ﻿<Window
-    x:Class="Z.MyToDo.Views.MainView"
+    x:Class="Z.MyToDo.View.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ext="clr-namespace:Z.MyToDo.Extensions"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:Z.MyToDo"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    Title="MainWindow"
+    Title="MainView"
     Width="1280"
     Height="768"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -83,7 +82,7 @@
                 <materialDesign:ColorZone
                     x:Name="ColorZone"
                     Padding="16"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    materialDesign:ElevationAssist.Elevation="Dp2"
                     DockPanel.Dock="Top"
                     Mode="PrimaryMid">
                     <DockPanel LastChildFill="True">
@@ -122,8 +121,6 @@
                                 <Button Command="{Binding LoginOutCommand}" Content="注销当前账户" />
                             </StackPanel>
                         </materialDesign:PopupBox>
-
-
 
                         <StackPanel Orientation="Horizontal">
                             <ToggleButton

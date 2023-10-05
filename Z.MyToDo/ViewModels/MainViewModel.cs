@@ -21,13 +21,16 @@ namespace Z.MyToDo.ViewModels
         public string UserName
         {
             get { return userName; }
-            set
-            {
-                userName = value;
-                RaisePropertyChanged();
-            }
+            set { userName = value; RaisePropertyChanged(); }
         }
 
+        private ObservableCollection<MenuBar> menuBars;
+
+        public ObservableCollection<MenuBar> MenuBars
+        {
+            get { return menuBars; }
+            set { menuBars = value; RaisePropertyChanged(); }
+        }
         public DelegateCommand LoginOutCommand { get; private set; }
 
         public DelegateCommand<MenuBar> NavigateCommand { get; private set; }
@@ -35,17 +38,6 @@ namespace Z.MyToDo.ViewModels
         public DelegateCommand GoBackCommand { get; private set; }
 
         public DelegateCommand GoForwardCommand { get; private set; }
-
-        private ObservableCollection<MenuBar> menuBars;
-        public ObservableCollection<MenuBar> MenuBars
-        {
-            get { return menuBars; }
-            set
-            {
-                menuBars = value;
-                RaisePropertyChanged();
-            }
-        }
 
         private readonly IContainerProvider containerProvider;
         private readonly IRegionManager regionManager;
@@ -61,22 +53,12 @@ namespace Z.MyToDo.ViewModels
             GoBackCommand = new DelegateCommand(GoBack);
             GoForwardCommand = new DelegateCommand(GoForward);
             LoginOutCommand = new DelegateCommand(LoginOut);
-            this.containerProvider = containerProvider;
-            this.regionManager = regionManager;
         }
 
-        /// <summary>
-        /// 配置首页初始化参数
-        /// </summary>
-        public void Configure()
-        {
-            CreateMenuBar();
-            regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("IndexView");
-        }
-
+        //注销当前用户
         private void LoginOut()
         {
-
+            App.LoginOut(containerProvider);
         }
 
         private void GoForward()
@@ -110,10 +92,20 @@ namespace Z.MyToDo.ViewModels
 
         private void CreateMenuBar()
         {
-            MenuBars.Add(new MenuBar { Icon = "Home", Title = "首页", NameSpace = "IndexView" });
-            MenuBars.Add(new MenuBar { Icon = "NoteBookOutline", Title = "待办事项", NameSpace = "ToDoView" });
-            MenuBars.Add(new MenuBar { Icon = "NotebookPlus", Title = "备忘录", NameSpace = "MemoView" });
-            MenuBars.Add(new MenuBar { Icon = "Cog", Title = "设置", NameSpace = "SettingsView" });
+            MenuBars.Add(new MenuBar() { Icon = "Home", Title = "首页", NameSpace = "IndexView" });
+            MenuBars.Add(new MenuBar() { Icon = "NotebookOutline", Title = "待办事项", NameSpace = "ToDoView" });
+            MenuBars.Add(new MenuBar() { Icon = "NotebookPlus", Title = "备忘录", NameSpace = "MemoView" });
+            MenuBars.Add(new MenuBar() { Icon = "Cog", Title = "设置", NameSpace = "SettingsView" });
+        }
+
+        /// <summary>
+        /// 配置首页初始化参数
+        /// </summary>
+        public void Configure()
+        {
+            UserName = AppSession.UserName;
+            CreateMenuBar();
+            regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("IndexView");
         }
     }
 }
